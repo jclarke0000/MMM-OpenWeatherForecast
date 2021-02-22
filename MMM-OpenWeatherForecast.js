@@ -61,6 +61,7 @@ Module.register("MMM-OpenWeatherForecast", {
     colored: true,
     useAnimatedIcons: true,
     animateMainIconOnly: true,
+    animatedIconStartDelay: 0,
     mainIconSize: 100,
     forecastIconSize: 70,
     updateFadeSpeed: 500,
@@ -289,7 +290,7 @@ Module.register("MMM-OpenWeatherForecast", {
         var self = this;
         setTimeout(function() {
           self.playIcons(self);
-        }, this.config.updateFadeSpeed);
+        }, this.config.updateFadeSpeed + this.config.animatedIconStartDelay);
       } 
 
     }

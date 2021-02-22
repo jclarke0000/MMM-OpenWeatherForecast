@@ -103,6 +103,10 @@ https://www.latlong.net/.
       <td>When set to <code>true</code>, only the main current conditions icon is animated. The rest use your choice for <code>iconset</code> (<code>1c</code> is a good match for the animated icon).  If you are running on a low-powered device like a Raspberry Pi, performance may suffer if you set this to <code>false</code>.  In my testing on a Pi 3b, enabling this ramped up CPU temperature by 15° - 20°, and fade transitions were not smooth.<br><br><strong>Type</strong> <code>Boolean</code><br>Defaults to <code>true</code></td>
     </tr>
     <tr>
+      <td><code>animatedIconStartDelay</code></td>
+      <td>If you're using animated icons and they are not appearing, it might be timing issue, especially if you're using a slower system like a Raspberry Pi.  Add a delay before the call to start the animation is made, in milliseconds<br><br><strong>Type</strong> <code>Number</code><br>Defaults to <code>0</code></td>
+    </tr>
+    <tr>
       <td><code>showFeelsLikeTemp</code></td>
       <td>Makes the temprature display for current conditions and hourly forecast show the "feels like" temperature instead of the actual temperature.<br><br><strong>Type</strong> <code>Boolean</code><br>Defaults to <code>false</code></td>
     </tr>
