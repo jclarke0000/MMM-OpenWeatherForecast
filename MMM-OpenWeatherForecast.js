@@ -535,7 +535,7 @@ Module.register("MMM-OpenWeatherForecast", {
     },
     windSpeed: {
       standard: "m/s",
-      metric: "km/h",
+      metric: "m/s",
       imperial: "mph"
     }
   },
