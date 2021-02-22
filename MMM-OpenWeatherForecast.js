@@ -61,7 +61,7 @@ Module.register("MMM-OpenWeatherForecast", {
     colored: true,
     useAnimatedIcons: true,
     animateMainIconOnly: true,
-    animatedIconStartDelay: 0,
+    animatedIconStartDelay: 1000,
     mainIconSize: 100,
     forecastIconSize: 70,
     updateFadeSpeed: 500,

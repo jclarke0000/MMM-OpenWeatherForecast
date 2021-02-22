@@ -104,7 +104,7 @@ https://www.latlong.net/.
     </tr>
     <tr>
       <td><code>animatedIconStartDelay</code></td>
-      <td>If you're using animated icons and they are not appearing, it might be timing issue, especially if you're using a slower system like a Raspberry Pi.  Add a delay before the call to start the animation is made, in milliseconds<br><br><strong>Type</strong> <code>Number</code><br>Defaults to <code>0</code></td>
+      <td>If you're using animated icons and they are not appearing, it might be timing issue, especially if you're using a slower system like a Raspberry Pi.  Add a delay before the call to start the animation is made, in milliseconds<br><br><strong>Type</strong> <code>Number</code><br>Defaults to <code>1000</code></td>
     </tr>
     <tr>
       <td><code>showFeelsLikeTemp</code></td>
