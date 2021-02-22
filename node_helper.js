@@ -19,9 +19,10 @@
 
 *********************************/
 
-var NodeHelper = require("node_helper");
-var request = require("request");
-var moment = require("moment");
+const NodeHelper = require("node_helper");
+const fetch = require("node-fetch");
+const moment = require("../../node_modules/moment/moment.js");
+
 
 module.exports = NodeHelper.create({
 
@@ -29,10 +30,8 @@ module.exports = NodeHelper.create({
     console.log("====================== Starting node_helper for module [" + this.name + "]");
   },
 
-  socketNotificationReceived: function(notification, payload){
+  async socketNotificationReceived(notification, payload) {
     if (notification === "OPENWEATHER_FORECAST_GET") {
-
-      var self = this;
 
       if (payload.apikey == null || payload.apikey == "") {
         console.log( "[MMM-OpenWeatherForecast] " + moment().format("D-MMM-YY HH:mm") + " ** ERROR ** No API key configured. Get an API key at https://darksky.net" );
@@ -41,7 +40,7 @@ module.exports = NodeHelper.create({
       } else {
 
         //make request to OpenWeather One Call API
-        var url = "https://api.openweathermap.org/data/2.5/onecall?" +
+        const url = "https://api.openweathermap.org/data/2.5/onecall?" +
           "lat=" + payload.latitude +
           "&lon=" + payload.longitude +
           "&exclude=" + "minutely" +
@@ -50,20 +49,20 @@ module.exports = NodeHelper.create({
           "&lang=" + payload.language;
 
 
-        request({url: url, methid: "GET"}, function( error, response, body) {
+        try {
+          response = await fetch(url);
 
-          if(!error && response.statusCode == 200) {
-
-            //Good response
-            var resp = JSON.parse(body);
-            resp.instanceId = payload.instanceId;
-            self.sendSocketNotification("OPENWEATHER_FORECAST_DATA", resp);
-
-          } else {
-            console.log( "[MMM-DarkSkyForecast] " + moment().format("D-MMM-YY HH:mm") + " ** ERROR ** " + error );
+          if (response.statusText !== "OK") {
+            console.log( "[MMM-DarkSkyForecast] " + moment().format("D-MMM-YY HH:mm") + " ** ERROR ** " + response.statusText );
+            return;
           }
+          resp = await response.json();
+          resp.instanceId = payload.instanceId;
+          this.sendSocketNotification("OPENWEATHER_FORECAST_DATA", resp);
 
-        });
+        } catch (error) {
+          console.log( "[MMM-DarkSkyForecast] " + moment().format("D-MMM-YY HH:mm") + " ** ERROR ** " + error );
+	}
 
       }
     }
