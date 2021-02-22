@@ -1,0 +1,20 @@
+{
+  "name": "mmm-darkskyforecast",
+  "version": "1.0.0",
+  "description": "Magic Mirror module that gets weather forecast data from Dark Sky",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jclarke0000/MMM-DarkSkyForecast"
+  },
+  "main": "MMM-DarkSkyForecast.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jeff Clarke",
+  "license": "MIT",
+  "dependencies": {
+    "moment": "^2.29.1",
+    "npm": "^6.4.1",
+    "request": "^2.88.0"
+  }
+}
