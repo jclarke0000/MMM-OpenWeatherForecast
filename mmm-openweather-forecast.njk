@@ -68,11 +68,7 @@
         {% if config.extraCurrentConditions.precipitation %}
           <span class="precipitation-container">
             <img class="inline-icon rain" src="{{ inlineIcons.rain }}" />
-            <span class="pop">{{ forecast.currently.precipitation.pop }}</span>
-            
-            {% if forecast.currently.precipitation.accumulation %}
-              <span class="pop">{{ forecast.currently.precipitation.accumulation }}</span>
-            {% endif %}
+            <span class="pop">{{ forecast.currently.precipitation }}</span>
 
           </span>
         {% endif %}
@@ -221,7 +217,7 @@
                 <span class="pop">{{ h.precipitation.pop }}</span>
                 
                 {% if h.precipitation.accumulation %}
-                  <span class="pop">{{ h.precipitation.accumulation }}</span>
+                  <span class="pop">({{ h.precipitation.accumulation }})</span>
                 {% endif %}
               </span>
 
@@ -405,7 +401,7 @@
                 <span class="pop">{{ d.precipitation.pop }}</span>
                 
                 {% if d.precipitation.accumulation %}
-                  <span class="pop">{{ d.precipitation.accumulation }}</span>
+                  <span class="pop">({{ d.precipitation.accumulation }})</span>
                 {% endif %}
               </span>
 

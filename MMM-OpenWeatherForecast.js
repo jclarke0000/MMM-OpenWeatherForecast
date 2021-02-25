@@ -355,6 +355,13 @@ Module.register("MMM-OpenWeatherForecast", {
       alerts = this.weatherData.alerts;
     }
 
+    //current accumulation of precipitation
+    var accumulation = 0 + " " + this.getUnit("accumulationRain");
+    if (this.weatherData.current.rain) {
+      accumulation = (Math.round(this.weatherData.current.rain["1h"] * 10) / 10) + " " + this.getUnit("accumulationRain");
+    } else if (this.weatherData.current.snow) {
+      accumulation = (Math.round(this.weatherData.current.snow["1h"] * 10) / 10) + " " + this.getUnit("accumulationSnow");
+    }
 
     return {
       "currently" : {
@@ -362,7 +369,7 @@ Module.register("MMM-OpenWeatherForecast", {
         animatedIconId: this.config.useAnimatedIcons ? this.addIcon(this.iconMap[this.weatherData.current.weather[0].icon], true) : null,
         iconPath: this.generateIconSrc(this.iconMap[this.weatherData.current.weather[0].icon]),
         tempRange: this.formatHiLowTemperature(this.weatherData.daily[0].temp.max,this.weatherData.daily[0].temp.min),
-        precipitation: this.formatPrecipitation(null, this.weatherData.current.rain ? this.weatherData.current.rain["1h"] : null, this.weatherData.current.snow ? this.weatherData.current.snow["1h"] : null),
+        precipitation: accumulation,
         wind: this.formatWind(this.weatherData.current.wind_speed, this.weatherData.current.wind_deg, this.weatherData.current.wind_gust),
         sunrise: moment(this.weatherData.current.sunrise * 1000).format(this.config.label_sunriseTimeFormat),
         sunset: moment(this.weatherData.current.sunset * 1000).format(this.config.label_sunriseTimeFormat),
@@ -476,7 +483,6 @@ Module.register("MMM-OpenWeatherForecast", {
       } else if (snowAccumulation) { //snow
         accumulation = Math.round(snowAccumulation) + " " + this.getUnit("accumulationSnow");
       } 
-      accumulation = "(" + accumulation + ")";
     }
 
     return {
