@@ -28,7 +28,7 @@ At a minimum you need to supply the following required configuration parameters:
 * `latitude`
 * `longitude`
 
-`apikey` needs to be secified as a String, while `latitude` and `longitude` can be specified as either a String or a Number.  Both work fine.
+`apikey` needs to be specified as a String, while `latitude` and `longitude` can be specified as either a String or a Number.  Both work fine.
 
 e.g.,
 ```
