@@ -92,7 +92,7 @@ https://www.latlong.net/.
     </tr>
     <tr>
       <td><code>colored</code></td>
-      <td>Whether to present module in colour or black-and-white.  Note, if set to <code>false</code>, the monochramtic version of your chosen icon set will be forced.<br><br><strong>Type</strong> <code>Boolean</code><br>Defaults to <code>true</code></td>
+      <td>Whether to present the module in colour or black-and-white.  Note, if set to <code>false</code>, the monochramtic version of your chosen icon set will be forced.<br><br><strong>Type</strong> <code>Boolean</code><br>Defaults to <code>true</code></td>
     </tr>
     <tr>
       <td><code>useAnimatedIcons</code></td>
@@ -152,7 +152,7 @@ https://www.latlong.net/.
     </tr>
     <tr>
       <td><code>maxHourliesToShow</code></td>
-      <td>How many hourly forecasts to list.<br><br><strong>Type</strong> <code>Number</code><br>Defaults to <code>3</code></td>
+      <td>How many hourly forecasts to list. This is a maximum.  The API returns 48 hours of hourly forecast data.  So if this in combination with <code>hourlyForecastInterval</code> exceeds what's available in the API, you'll only see what's provided.  You won't get an error.  You'll just see less than what you might have been expecting.<br><br><strong>Type</strong> <code>Number</code><br>Defaults to <code>3</code></td>
     </tr>
     <tr>
       <td><code>hourlyExtras</code></td>
@@ -172,7 +172,7 @@ https://www.latlong.net/.
     </tr>
     <tr>
       <td><code>maxDailiesToShow</code></td>
-      <td>How many daily forecasts to list.<br><br><strong>Type</strong> <code>Number</code><br>Defaults to <code>3</code></td>
+      <td>How many daily forecasts to list.  This is a maximum.  The API returns 7 days of daily forecast data.  So if you set this greater than 7, you'll only see 7 days. (actually 6, because the current day is not shown within the dailies -- current day conditions are covered in the hourlies and the current conditions displays.)<br><br><strong>Type</strong> <code>Number</code><br>Defaults to <code>3</code></td>
     </tr>
     <tr>
       <td><code>dailyExtras</code></td>
@@ -231,7 +231,7 @@ This shows all available options:
   },
 ```
 
-This shows just Hi/Low temp display an precipitation:
+This shows just Hi/Low temp display and precipitation:
 ```
   extraCurrentConditions: {
     highLowTemp: true,
@@ -368,7 +368,7 @@ This module is set to be 320px wide by default.  If you wish to override it, you
 }
 ```
 
-Most important elements of this module have one or more class names applied. Examine the `MMM-OpenWeatherForecast.css` or inspect elements directly with your browser of choice to determine what class you would like to override.
+Most important elements of this module have one or more class names applied. Examine the `MMM-OpenWeatherForecast.css`, `mmm-openweather-forecast.njk`, or inspect elements directly with your browser of choice to determine what class you would like to override (Pro tip:  If you start MagicMirror with `npm start dev` you'll get Chrome dev tools that will allow you to directly inspect any HTML element in the mdoule).
 
 
 ## For Module Developers
