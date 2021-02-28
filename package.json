@@ -13,8 +13,8 @@
   "author": "Jeff Clarke",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.21.1",
     "moment": "^2.29.1",
-    "npm": "^6.4.1",
-    "request": "^2.88.0"
+    "npm": "^6.4.1"
   }
 }

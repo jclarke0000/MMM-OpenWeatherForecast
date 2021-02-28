@@ -1,26 +1,26 @@
 /*********************************
 
-  Node Helper for MMM-DarkSkyForecast.
+  Node Helper for MMM-OpenWeatherForecast.
 
-  This helper is responsible for the data pull from Dark Sky.
-  At a minimum the API key, Latitude and Longitude parameters
-  must be provided.  If any of these are missing, the request
-  to Dark Sky will not be executed, and instead an error
+  This helper is responsible for the data pull from OpenWeather's
+  One Call API. At a minimum the API key, Latitude and Longitude
+  parameters must be provided.  If any of these are missing, the
+  request to OpenWeather will not be executed, and instead an error
   will be output the the MagicMirror log.
 
   Additional, this module supplies two optional parameters:
 
-    units - one of "ca", "uk2", "us", or "si"
-    lang - Any of the languages Dark Sky supports, as listed here: https://darksky.net/dev/docs#response-format
+    units - one of "standard", "metric" or "imperial"
+    lang - Any of the languages OpenWeather supports, as listed here: https://openweathermap.org/api/one-call-api#multi
 
-  The Dark Sky API request looks like this:
+  The OpenWeather OneCall API request looks like this:
 
-    https://api.darksky.net/forecast/API_KEY/LATITUDE,LONGITUDE?units=XXX&lang=YY
+    http://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&lang={lang}&exclude=minutely&units={units}&lang={lang}
 
 *********************************/
 
 var NodeHelper = require("node_helper");
-var request = require("request");
+var axios = require('axios').default; //replaces the deprecated Request library
 var moment = require("moment");
 
 module.exports = NodeHelper.create({
@@ -49,21 +49,22 @@ module.exports = NodeHelper.create({
           "&units=" + payload.units +
           "&lang=" + payload.language;
 
+        /* 
+          Update 28-Feb-2021: 
+          The old standby Request library has been deprecated.
+          So data fetch is now done with Axios.
+         */
+        axios.get(url)
+          .then(function (response) {
+            // handle success
+            response.data.instanceId = payload.instanceId;
+            self.sendSocketNotification("OPENWEATHER_FORECAST_DATA", response.data);
+          })
+          .catch(function (error) {
+            // handle error
+            console.log( "[MMM-OpenWeatherForecast] " + moment().format("D-MMM-YY HH:mm") + " ** ERROR ** " + error );
+          });
 
-        request({url: url, methid: "GET"}, function( error, response, body) {
-
-          if(!error && response.statusCode == 200) {
-
-            //Good response
-            var resp = JSON.parse(body);
-            resp.instanceId = payload.instanceId;
-            self.sendSocketNotification("OPENWEATHER_FORECAST_DATA", resp);
-
-          } else {
-            console.log( "[MMM-DarkSkyForecast] " + moment().format("D-MMM-YY HH:mm") + " ** ERROR ** " + error );
-          }
-
-        });
 
       }
     }
