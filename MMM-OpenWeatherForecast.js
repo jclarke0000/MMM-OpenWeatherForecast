@@ -319,7 +319,7 @@ Module.register("MMM-OpenWeatherForecast", {
         }
 
         var thisHour = this.weatherData.hourly[currentIndex];
-        thisHour.dt = thisHour.dt + timeZoneOffset;
+        // thisHour.dt = thisHour.dt + timeZoneOffset;
 
         hourlies.push(this.forecastItemFactory(thisHour, "hourly"));
 
@@ -339,7 +339,7 @@ Module.register("MMM-OpenWeatherForecast", {
         }
 
         var thisDay = this.weatherData.daily[i];
-        thisDay.dt = thisDay.dt + timeZoneOffset; 
+        // thisDay.dt = thisDay.dt + timeZoneOffset; 
 
         dailies.push(this.forecastItemFactory(thisDay, "daily"));
       }
