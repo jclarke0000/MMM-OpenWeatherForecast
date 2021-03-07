@@ -191,7 +191,7 @@ https://www.latlong.net/.
       <td>The label you wish to display for prefixing low temperature.<br><br><strong>Type</strong> <code>String</code><br>Defaults to <code>"L"</code>.</td>
     </tr>
     <tr>
-      <td><code>label_timeFormat</code></td>
+      <td><code>label_hourlyTimeFormat</code></td>
       <td>How you want the time formatted for hourly forecast display.  Accepts any valid moment.js format (<a href="https://momentjs.com/docs/#/displaying/format/">https://momentjs.com/docs/#/displaying/format/</a>). For example, specify short 24h format with <code>"k[h]"</code> (e.g.: <code>14h</code>)<br><br><strong>Type</strong> <code>String</code><br>Defaults to <code>"h a"</code> (e.g.: <code>9 am</code>)</td>
     </tr>
     <tr>
