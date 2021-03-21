@@ -104,13 +104,29 @@
   background-position: 6px 10px;
 }
 
-.MMM-OpenWeatherForecast .weather-alert .weather-alert-description {
+.MMM-OpenWeatherForecast .weather-alert .weather-alert-title {
   font-size: 17px;
   line-height: 1;
+  margin-bottom: 4px;
+  color: #DD1212;
+  display: block;
+  text-align: left;
+  padding-left: 36px;
+  font-weight: 700;
+}
+.MMM-OpenWeatherForecast .weather-alert .weather-alert-description {
+  font-size: 17px;
+  line-height: 1.2;
   color: #FFF;
   display: block;
   text-align: left;
   padding-left: 36px;
+
+  /* truncate to no more than three lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
 }
 
 .MMM-OpenWeatherForecast .weather-alert .weather-alert-source {

@@ -27,6 +27,7 @@
 
         {% for alert in forecast.alerts %}
           <div class="weather-alert">
+            <span class="weather-alert-title">{{ alert.event }}</span>
             <span class="weather-alert-description">{{ alert.description }}</span>
             <span class="weather-alert-source">{{ alert.sender_name }}</span>
           </div>

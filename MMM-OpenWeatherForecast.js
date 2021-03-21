@@ -503,10 +503,6 @@ Module.register("MMM-OpenWeatherForecast", {
       conversionFactor = 3.6;
     }
 
-    console.log("=========== units: " + this.config.units);
-    console.log("=========== use km/h: " + this.config.displayKmhForWind);
-    console.log("=========== conv factor: " + conversionFactor);
-
     //wind gust
     var windGust = null;
     if (!this.config.concise && gust) {
