@@ -83,6 +83,10 @@ https://www.latlong.net/.
       <td>One of the following: <code>standard</code> (e.g., degrees Kelvin), <code>metric</code> (e.g., degress Celcius), or <code>imperial</code> (e.g., degrees Fahrenheit).<br><br><strong>Type</strong> <code>String</code><br>Defaults to <code>"metric"</code><br /></td>
     </tr>
     <tr>
+      <td><code>displayKmhForWind</code></td>
+      <td>When <code>"standard"</code> or <code>"metric"</code> are used for <code>units</code> OpenWeather's API returns wind speed in m/s.  Set this to <code>true</code> if you would like to see wind speed displayed in km/h.  This parameter has no effect if <code>units</code> is set to <code>"imperial"</code>.<br><br><strong>Type</strong> <code>Boolean</code><br>Defaults to <code>false</code><br /></td>
+    </tr>
+    <tr>
       <td><code>concise</code></td>
       <td>When set to <code>true</code>, this presents less information.  (e.g., no precipitation accumulation, no wind gusts, etc.)<br><br><strong>Type</strong> <code>Boolean</code><br>Defaults to <code>true</code></td>
     </tr>

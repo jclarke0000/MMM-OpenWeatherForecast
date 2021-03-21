@@ -56,6 +56,7 @@ Module.register("MMM-OpenWeatherForecast", {
     requestDelay: 0,
     language: config.language,
     units: "metric",
+    displayKmhForWind: false,
     concise: true,
     iconset: "1c",
     colored: true,
@@ -497,14 +498,23 @@ Module.register("MMM-OpenWeatherForecast", {
    */
   formatWind: function(speed, bearing, gust) {
 
+    var conversionFactor = 1;
+    if (this.config.units != "imperial" && this.config.displayKmhForWind) {
+      conversionFactor = 3.6;
+    }
+
+    console.log("=========== units: " + this.config.units);
+    console.log("=========== use km/h: " + this.config.displayKmhForWind);
+    console.log("=========== conv factor: " + conversionFactor);
+
     //wind gust
     var windGust = null;
     if (!this.config.concise && gust) {
-      windGust = " (" + this.config.label_maximum + " " + Math.round(gust) + " " + this.getUnit("windSpeed") + ")";
+      windGust = " (" + this.config.label_maximum + " " + Math.round(gust * conversionFactor) + " " + this.getUnit("windSpeed") + ")";
     }    
 
     return {
-      windSpeed: Math.round(speed) + " " + this.getUnit("windSpeed") + (!this.config.concise ? " " + this.getOrdinal(bearing) : ""),
+      windSpeed: Math.round(speed * conversionFactor) + " " + this.getUnit("windSpeed") + (!this.config.concise ? " " + this.getOrdinal(bearing) : ""),
       windGust: windGust
     };
   },
@@ -513,7 +523,13 @@ Module.register("MMM-OpenWeatherForecast", {
     Returns the units in use for the data pull from Dark Sky
    */
   getUnit: function(metric) {
-    return this.units[metric][this.config.units];
+
+    if (metric == "windSpeed" && this.config.units != "imperial" && this.config.displayKmhForWind) {
+      return "km/h"
+    } else {
+      return this.units[metric][this.config.units];
+    }
+
   },
 
   /*
