@@ -100,7 +100,7 @@ https://www.latlong.net/.
     </tr>
     <tr>
       <td><code>useAnimatedIcons</code></td>
-      <td>Whether to use the animated icon set.  When set to true, this will override your choice for <code>iconset</code>. However, flat icons will still be used in some instances.  For example if you set the <code>animateMainIconOnly</code> parameter to <code>true</code>, daily and hourly forecasts will not be animated and instead will use your choice for <code>iconset</code>.  Inline icons (i.e. used to prefix weather extras) will always be flat.  A good <code>iconset</code> match for the animated set is <code>1c</code>.<br><br><strong>Type</strong> <code>Boolean</code><br>Defaults to <code>true</code></td>
+      <td>Whether to use the animated icon set.  When set to true, this will override your choice for <code>iconset</code>. However, flat icons will still be used in some instances.  For example if you set the <code>animateMainIconOnly</code> parameter to <code>true</code>, daily and hourly forecasts will not be animated and instead will use your choice for <code>iconset</code>.  Inline icons (i.e. used to prefix weather extras) will always be flat.  A good <code>iconset</code> match for the animated set is <code>1c</code>. NOTE: This may lead to higher than normal CPU usage on low-powered devices such as a Raspberry Pi.  You may also want to set <code>animateMainIconOnly</code> to <code>true</code> to keep things under control.<br><br><strong>Type</strong> <code>Boolean</code><br>Defaults to <code>true</code></td>
     </tr>
     <tr>
       <td><code>animateMainIconOnly</code></td>
